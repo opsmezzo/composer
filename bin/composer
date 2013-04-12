@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+var util = require('util'),
+    path = require('path'),
+    argv = require('optimist').argv,
+    composer = require('../lib/composer');
+    
+var help = [
+    "usage: composer [options]",
+    "",
+    "options:",
+    "  -a                 IP Address that you want the Master to run from [dynamic]",
+    "  -p                 Port that you want the composer to run on       [9004]",
+    "  -e [env]           The environment to the specified command in     [development]",
+    "  -c, --config       File to use for required configuration values   [config/env/development.json]",
+    "  -h, --help         You're staring at it",
+].join('\n');
+
+if (argv.h || argv.help) {
+  return util.puts(help);
+}
+
+var address    = argv.a || composer.common.ipAddress(),
+    configFile = argv.c || argv.config,
+    env        = argv.e || 'development',
+    port       = argv.p || 9004,
+    ipAddress;
+
+configFile = configFile
+  ? path.resolve(configFile)
+  : path.join(__dirname, '..', 'config', 'env', 'development.json');
+
+console.log('Configuring composer'.magenta + ' with ' + configFile.yellow);
+console.log('Starting composer'.magenta + ' in ' + env.yellow);
+composer.config.file(configFile);
+
+composer.start(port, function (err, server) {
+  if (err) {
+    return log('Error starting Composer: ' + err.message);
+  }
+  composer.common.showWelcome(address, port);
+});
