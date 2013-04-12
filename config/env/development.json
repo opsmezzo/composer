@@ -1,0 +1,14 @@
+{
+  "log": {
+    "logAll": true
+  },
+  "database": {
+    "database": "development",
+    "host": "127.0.0.1",
+    "port": 5984
+  },
+  "auth": {
+    "username": "devjitsu",
+    "password": "1234"
+  }
+}
