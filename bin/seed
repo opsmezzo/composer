@@ -1,0 +1,118 @@
+#!/usr/bin/env node
+
+var path = require('path'),
+    async = require('flatiron').common.async,
+    cradle = require('cradle'),
+    argv = require('optimist').argv,
+    hash = require('node_hash'),
+    composer = require('../lib/composer'),
+    configs = require('../test/fixtures/config').config,
+    systems = require('../test/fixtures/systems').systems,
+    users = require('../test/fixtures/users').users,
+    localDB, 
+    localIP, 
+    help;
+    
+help = [
+  "usage: seed [options]",
+  "",
+  "options:",
+  "  -e [env]       Environment to seed data in                             [development]",
+  "  -l             IP Address of the local CouchDB server                  [localhost]",
+  "  -h, --help     You're staring at it"
+].join('\n');
+
+if (argv.h) {
+  return console.log(help);
+}
+
+var env = argv.e || 'development',
+    data = [];
+    
+configs.forEach(function (config) {
+  config._id = 'config/' + config.name;
+  data.push(config);
+});
+
+systems.forEach(function (system) {
+  system._id = 'system/' + system.name;
+  data.push(system);
+  
+  var version = composer.common.clone(system)
+  delete version._id;
+  delete version.resource;
+  
+  system.versions = system.versions || {};
+  system.versions[system.version] = version;
+});
+
+users.forEach(function (user) {
+  user._id              = 'user/' + user.username;
+  user.password         = user.password || '';
+  user['password-salt'] = composer.common.randomString(64);
+  user.password         = hash.md5(user.password, user['password-salt']);
+
+  data.push(user);
+});
+
+function clone(obj) {
+  var i, copy = {};
+  for (i in obj) {
+    if (obj.hasOwnProperty(i)) {
+      copy[i] = obj[i];
+    }
+  }
+  return copy;
+}
+
+// Create connection to local dev database
+localIP = argv.l || '127.0.0.1';
+localDB = new(cradle.Connection)(localIP).database('development');
+
+var options = {
+  env: env
+};
+
+composer.config.use('env', {
+  type: 'file',
+  file: path.join(__dirname, '..','config', 'env', 'development.json')
+});
+
+// If we are seeding local
+composer.init(options, function () {
+  async.series([
+    function recreateDb(next) {
+      localDB.destroy(function () {
+        localDB.create(next);
+      });
+    },
+    function seedData(next) {
+      localDB.save(data, next);
+    },
+    function seedDesign(done) {
+      async.forEach(
+        Object.keys(composer.resources),
+        function syncDesign(key, next) {
+          var Resource = composer.resources[key];
+
+          if (!Resource || !Resource.once) {
+            return next();
+          }
+          
+          Resource.once('error', next);
+          Resource.sync(next);
+        },
+        done
+      );
+    }
+  ], function (err) {
+    if (err) {
+      console.log('Error seeding database'.red);
+      console.log(err.message.red);
+      process.exit(1);
+    }
+
+    console.log('Local database seed completed'.green);
+    process.exit(0);
+  })
+});
