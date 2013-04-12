@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+*.log
+.DS_Store
+test/fixtures/download/*
+!test/fixtures/download/.gitkeep
+.*.sw[op]
