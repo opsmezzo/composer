@@ -1,11 +1,11 @@
 {
-  "name": "conservatory",
-  "version": "0.9.7",
-  "description": "The provisioning and systems configuration management component of orchestra",
+  "name": "composer",
+  "version": "0.0.0",
+  "description": "The systems configuration management component of orchestra",
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "repository": {
     "type": "git",
-    "url": "http://github.com/nodejitsu/conservatory.git" 
+    "url": "https://github.com/opsmezzo/composer.git"
   },
   "main": "./lib/conservatory",
   "keywords": ["deploy", "nodejitsu", "conservatory", "sysadmin"],
@@ -20,7 +20,6 @@
     "pkgcloud": "~0.6.12",
     "pkginfo": "0.2.x",
     "resourceful": "~0.2.2",
-    "resourceful-webhooks": "0.0.x",
     "restful": "~0.2.2",
     "semver": "~1.1.4",
     "union": "~0.3.6",
