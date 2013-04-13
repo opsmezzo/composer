@@ -18,7 +18,7 @@ vows.describe('composer/resources/users/client').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
     server = pserver;
   })
-).addBatch(apiClientContext('composer', {
+).addBatch(apiClientContext({
   "the users.create() method": {
     topic: function (client) {
       client.users.create({
@@ -52,7 +52,7 @@ vows.describe('composer/resources/users/client').addBatch(
       }
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the users.list() method": {
     topic: function (client) {
       client.users.list(this.callback);
@@ -67,7 +67,7 @@ vows.describe('composer/resources/users/client').addBatch(
       });
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the users.destroy() method": {
     topic: function (client) {
       client.users.destroy('testjitsu', this.callback);

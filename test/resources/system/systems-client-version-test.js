@@ -25,7 +25,7 @@ vows.describe('composer/resources/systems/client').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
     server = pserver;
   })
-).addBatch(apiClientContext('composer', {
+).addBatch(apiClientContext({
   "with a new version": {
     "the systems.addVersion() method": {
       topic: function (client) {
@@ -36,7 +36,7 @@ vows.describe('composer/resources/systems/client').addBatch(
       }
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.get() method": {
     topic: function (client) {
       client.systems.get('test-system-two', this.callback);
@@ -60,7 +60,7 @@ vows.describe('composer/resources/systems/client').addBatch(
       }
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.removeVersion() method": {
     "with a version that exists": {
       topic: function (client) {
@@ -80,7 +80,7 @@ vows.describe('composer/resources/systems/client').addBatch(
       }
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.get() method": {
     topic: function (client) {
       client.systems.get('test-system-two', this.callback);

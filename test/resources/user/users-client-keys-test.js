@@ -19,7 +19,7 @@ vows.describe('composer/resources/users/client/keys').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
     server = pserver;
   })
-).addBatch(apiClientContext('composer', {
+).addBatch(apiClientContext({
   "the users.getKey() method": {
     "with a valid keyname": {
       topic: function (client) {
@@ -107,7 +107,7 @@ vows.describe('composer/resources/users/client/keys').addBatch(
       }
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the users.addKey() method": {
     "with a valid user": {
       "with no keyname": {

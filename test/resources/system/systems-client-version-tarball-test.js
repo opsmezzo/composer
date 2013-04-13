@@ -57,15 +57,15 @@ vows.describe('composer/resources/systems/client/versions/tarball').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
     server = pserver;
   })
-).addBatch(apiClientContext('composer', {
+).addBatch(apiClientContext({
   "the systems.upload() method": {
     "v0.0.0": shouldUploadVersion('test-system-two', 'v0.0.0'),
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.upload() method": {
     "v0.1.2": shouldUploadVersion('test-system-two', 'v0.1.2')
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.upload() method": {
     "with an existing version": shouldUploadVersion('test-system-two', 'v0.1.2', function (err, _) {
       assert.equal(err.status, 400);
@@ -94,12 +94,12 @@ vows.describe('composer/resources/systems/client/versions/tarball').addBatch(
       }
     }
   }
-}))/*.addBatch(apiClientContext('composer', {
+}))/*.addBatch(apiClientContext({
   "the systems.get() method": shouldContainVersions(
     'test-system-two',
     ['0.0.0', '0.1.2']
   )
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.download() method": {
     "with a version that doesnt exist": {
       topic: function (client) {

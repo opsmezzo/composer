@@ -18,7 +18,7 @@ vows.describe('composer/resources/config/client').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
     server = pserver;
   })
-).addBatch(apiClientContext('composer', {
+).addBatch(apiClientContext({
   "the config.create() method": {
     topic: function (client) {
       client.config.create('test-config', {
@@ -82,7 +82,7 @@ vows.describe('composer/resources/config/client').addBatch(
       }
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the config.destroy() method": {
     topic: function (client) {
       client.config.destroy('test-config', this.callback);
@@ -91,7 +91,7 @@ vows.describe('composer/resources/config/client').addBatch(
       assert.isNull(err);
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the config.list() method": {
     topic: function (client) {
       client.config.list(this.callback);

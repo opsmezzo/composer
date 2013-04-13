@@ -12,7 +12,7 @@ var assert = require('assert'),
     helpers = require('./index'),
     start = require('./start'),
     users = require('../fixtures/users').users,
-    composerApi = require('conservatory-api'); // TODO: transition to composer-api
+    composerApi = require('composer-api');
 
 var devjitsu = users[1];
 
@@ -52,13 +52,14 @@ macros.requireComposer = function (port, callback) {
 };
 
 macros.apiClientContext = function (options, nested) {
-  options = typeof options === 'string'
-    ? { type: options, auth: devjitsu }
-    : options
+  if (typeof nested === 'undefined') {
+    nested = options;
+    options = { auth: devjitsu };
+  }
 
   var context = {
     topic: function () {
-      return composerApi.createClient(options.type, options);
+      return composerApi.createClient(options);
     }
   };
   

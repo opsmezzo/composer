@@ -21,7 +21,7 @@ vows.describe('composer/resources/systems/client').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
     server = pserver;
   })
-).addBatch(apiClientContext('composer', {
+).addBatch(apiClientContext({
   "the systems.create() method": {
     topic: function (client) {
       client.systems.create(missing[1], this.callback);
@@ -51,7 +51,7 @@ vows.describe('composer/resources/systems/client').addBatch(
       }
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.destroy() method": {
     topic: function (client) {
       client.systems.destroy('fixture-two', this.callback);
@@ -60,7 +60,7 @@ vows.describe('composer/resources/systems/client').addBatch(
       assert.isNull(err);
     }
   }
-})).addBatch(apiClientContext('composer', {
+})).addBatch(apiClientContext({
   "the systems.list() method": {
     topic: function (client) {
       client.systems.list(this.callback);
@@ -72,7 +72,7 @@ vows.describe('composer/resources/systems/client').addBatch(
     }
   }
 })).addBatch({
-  "With an invalid maintainer": apiClientContext('composer', {
+  "With an invalid maintainer": apiClientContext({
     "systems.addOwner()": {
       topic: function (client) {
         client.systems.addOwner('acl-system', ['devjitsu'], this.callback);
