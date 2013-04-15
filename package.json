@@ -1,6 +1,6 @@
 {
   "name": "composer",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The systems configuration management component of orchestra",
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "repository": {
