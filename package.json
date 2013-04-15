@@ -23,7 +23,8 @@
     "semver": "~1.1.4",
     "union": "~0.3.6",
     "winston": "0.6.x",
-    "winston-loggly": "0.6.0"
+    "winston-loggly": "0.6.0",
+    "conservatory-api": "1.0.x"
   },
   "devDependencies": {
     "api-easy": "~0.3.7",

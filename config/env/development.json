@@ -10,5 +10,13 @@
   "auth": {
     "username": "devjitsu",
     "password": "1234"
+  },
+  "provisioner": {
+    "host": "127.0.0.1",
+    "port": 9003,
+    "auth": {
+      "username": "devjitsu",
+      "password": "1234"
+    }
   }
 }
