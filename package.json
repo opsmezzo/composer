@@ -29,10 +29,10 @@
   "devDependencies": {
     "api-easy": "~0.3.7",
     "cradle": "~0.6.4",
-    "nock": "~0.14.2",
+    "nock": "~0.17.3",
     "request": "~2.12.0",
     "vows": "~0.7.x",
-    "composer-api": "1.0.0"
+    "composer-api": "~1.0.0"
   },
   "scripts": { 
     "test": "bin/seed && vows test/**/*-test.js test/**/**/*-test.js --spec --isolate"

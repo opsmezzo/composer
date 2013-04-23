@@ -12,7 +12,7 @@
     "password": "1234"
   },
   "provisioner": {
-    "host": "127.0.0.1",
+    "host": "mock.provisioner.opsmezzo.com",
     "port": 9003,
     "auth": {
       "username": "devjitsu",

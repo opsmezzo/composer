@@ -15,6 +15,14 @@ var suite = apiEasy.describe('composer/resources/config/api').addBatch(
   helpers.macros.requireComposer(port)
 );
 
+//
+// Mock out the API requests to conservatory
+// using `nock`.
+//
+helpers.nock.roles(2);
+helpers.nock.servers(1);
+helpers.nock.groupServers('group-0', 1);
+
 helpers.testApi(suite, port)
   .put('/config/staging/foo', { bar: 'whatever' })
     .expect(200)
@@ -69,7 +77,7 @@ helpers.testApi(suite, port)
       var config = JSON.parse(body);
 
       assert.isObject(config);
-      ['nodejitsu', 'haibu', 'composer'].forEach(function (system) {
+      ['composer', 'conservatory', 'quill-base'].forEach(function (system) {
         assert.isArray(config[system]);
       });
 
@@ -82,7 +90,9 @@ helpers.testApi(suite, port)
     .expect('should return the properly indexed data', function (err, res, body) {
       assert.isNull(err);
       var config = JSON.parse(body);
-      assert.isArray(config.haibu);
-      assert.lengthOf(config.haibu, 1);
+      ['conservatory', 'quill-base'].forEach(function (role) {
+        assert.isArray(config[role]);
+        assert.lengthOf(config[role], 1);
+      });
     });
 suite.export(module);

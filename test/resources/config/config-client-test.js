@@ -14,6 +14,14 @@ var apiClientContext = helpers.macros.apiClientContext,
     port = 9000, 
     server;
 
+//
+// Mock out the API requests to conservatory
+// using `nock`.
+//
+helpers.nock.roles(2);
+helpers.nock.servers(1);
+helpers.nock.groupServers('group-0', 1);
+
 vows.describe('composer/resources/config/client').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
     server = pserver;
@@ -62,7 +70,8 @@ vows.describe('composer/resources/config/client').addBatch(
       "should return the properly indexed data": function (err, config) {
         assert.isNull(err);
         assert.isObject(config);
-        ['nodejitsu', 'haibu', 'composer'].forEach(function (system) {
+
+        ['composer', 'conservatory', 'quill-base'].forEach(function (system) {
           assert.isArray(config[system]);
         });
 
@@ -77,8 +86,10 @@ vows.describe('composer/resources/config/client').addBatch(
       },
       "should return the properly indexed data": function (err, config) {
         assert.isNull(err);
-        assert.isArray(config.haibu);
-        assert.lengthOf(config.haibu, 1);
+        ['conservatory', 'quill-base'].forEach(function (role) {
+          assert.isArray(config[role]);
+          assert.lengthOf(config[role], 1);
+        });
       }
     }
   }

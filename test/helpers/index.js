@@ -15,7 +15,7 @@ composer.config.use('env', {
   file: path.join(__dirname, '..', '..', 'config', 'env', 'development.json')
 });
 
-//exports.nock   = require('./nock');
+exports.nock   = require('./nock');
 exports.macros = require('./macros');
 exports.start  = require('./start');
 
