@@ -1,4 +1,4 @@
-# composer
+# composer ![Build Status](https://secure.travis-ci.org/opsmezzo/composer.png)](http://travis-ci.org/opsmezzo/composer)
 
 A configuration management and package management server that supports OS and infrastructure opacity. **This is the backend for `quill`**.
 
