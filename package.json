@@ -1,30 +1,30 @@
 {
-  "name": "composer-server",
+  "name": "quill-composer",
   "version": "1.0.0",
-  "description": "The systems configuration management component of orchestra",
+  "description": "A configuration management and package management server that supports OS and infrastructure opacity.",
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/opsmezzo/composer.git"
   },
-  "main": "./lib/conservatory",
-  "keywords": ["deploy", "nodejitsu", "conservatory", "sysadmin"],
+  "main": "./lib/composer",
+  "keywords": ["configuration management", "opsmezzo", "sysadmin"],
   "dependencies": {
+    "conservatory-api": "1.0.x",
     "director": "~1.1.10",
     "flatiron": "~0.3.5",
     "flatiron-http-users": "~0.4.3",
     "node_hash": "0.2.x",
     "neuron": "0.4.x",
-    "optimist": "0.3.x",
-    "pkgcloud": "~0.6.12",
-    "pkginfo": "0.2.x",
+    "optimist": "0.4.x",
+    "pkgcloud": "~0.6.15",
+    "pkginfo": "0.3.x",
     "resourceful": "~0.2.2",
     "restful": "~0.2.2",
     "semver": "~1.1.4",
     "union": "~0.3.6",
     "winston": "0.6.x",
-    "winston-loggly": "0.6.0",
-    "conservatory-api": "1.0.x"
+    "winston-loggly": "0.6.0"
   },
   "devDependencies": {
     "api-easy": "~0.3.7",
