@@ -75,8 +75,8 @@ vows.describe('composer/resources/config/client').addBatch(
           assert.isArray(config[system]);
         });
 
-        ['composer', 'group-0', 'group-1'].forEach(function (group) {
-          assert.isObject(config.groups[group]);
+        ['main', 'staging'].forEach(function (group) {
+          assert.isObject(config.clusters[group]);
         });
       }
     },
