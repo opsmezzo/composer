@@ -11,6 +11,7 @@ module.exports = [{
   group: 'composer',
   role: 'composer',
   status: 'RUNNING',
+  clusters: ['main'],
   addresses: {
     public: ['127.0.0.1'],
     private: ['127.0.0.1']
@@ -22,6 +23,7 @@ module.exports = [{
   group: 'composer',
   role: 'composer',
   status: 'RUNNING',
+  clusters: ['staging'],
   addresses: {
     public: ['127.0.0.1'],
     private: ['127.0.0.1']
@@ -33,6 +35,7 @@ module.exports = [{
   group: 'group-0',
   role: 'conservatory',
   status: 'RUNNING',
+  clusters: ['main'],
   addresses: {
     public: ['127.0.0.1'],
     private: ['127.0.0.1']
@@ -44,6 +47,7 @@ module.exports = [{
   group: 'group-1',
   role: 'conservatory',
   status: 'RUNNING',
+  clusters: ['staging'],
   addresses: {
     public: ['127.0.0.1'],
     private: ['127.0.0.1']
@@ -55,6 +59,7 @@ module.exports = [{
   group: 'group-0',
   role: 'quill-base',
   status: 'RUNNING',
+  clusters: ['main'],
   addresses: {
     public: ['127.0.0.1'],
     private: ['127.0.0.1']
@@ -66,6 +71,7 @@ module.exports = [{
   group: 'group-1',
   role: 'quill-base',
   status: 'RUNNING',
+  clusters: ['staging'],
   addresses: {
     public: ['127.0.0.1'],
     private: ['127.0.0.1']

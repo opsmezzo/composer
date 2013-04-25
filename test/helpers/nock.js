@@ -56,3 +56,18 @@ exports.groupServers = function (group, requests) {
     });
   }
 };
+
+//
+// ### function clusterServers (cluster, requests)
+// Mocks a request to list servers in a cluster
+// for a given number of `requests`.
+//
+exports.clusterServers = function (cluster, requests) {
+  for (var i = 0; i < requests; i++) {
+    api.get('/clusters/' + cluster + '/servers').reply(200, {
+      servers: servers.filter(function (server) {
+        return server.clusters && server.clusters.indexOf(cluster) !== -1;
+      })
+    });
+  }
+};
