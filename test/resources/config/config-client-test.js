@@ -20,7 +20,7 @@ var apiClientContext = helpers.macros.apiClientContext,
 //
 helpers.nock.roles(2);
 helpers.nock.servers(1);
-helpers.nock.groupServers('group-0', 1);
+helpers.nock.clusterServers('main', 1);
 
 vows.describe('composer/resources/config/client').addBatch(
   helpers.macros.requireComposer(port, function (err, pserver) {
@@ -80,13 +80,13 @@ vows.describe('composer/resources/config/client').addBatch(
         });
       }
     },
-    "with a group": {
+    "with a cluster": {
       topic: function (client) {
-        client.config.servers('group-0', this.callback);
+        client.config.servers('main', this.callback);
       },
       "should return the properly indexed data": function (err, config) {
         assert.isNull(err);
-        ['conservatory', 'quill-base'].forEach(function (role) {
+        ['conservatory', 'composer'].forEach(function (role) {
           assert.isArray(config[role]);
           assert.lengthOf(config[role], 1);
         });

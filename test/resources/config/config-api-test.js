@@ -21,7 +21,7 @@ var suite = apiEasy.describe('composer/resources/config/api').addBatch(
 //
 helpers.nock.roles(2);
 helpers.nock.servers(1);
-helpers.nock.groupServers('group-0', 1);
+helpers.nock.clusterServers('main', 1);
 
 helpers.testApi(suite, port)
   .put('/config/staging/foo', { bar: 'whatever' })
@@ -85,12 +85,12 @@ helpers.testApi(suite, port)
         assert.isObject(config.groups[group]);
       });
     })
-  .get('/config/servers/group-0')
+  .get('/config/servers/main')
     .expect(200)
     .expect('should return the properly indexed data', function (err, res, body) {
       assert.isNull(err);
       var config = JSON.parse(body);
-      ['conservatory', 'quill-base'].forEach(function (role) {
+      ['conservatory', 'composer'].forEach(function (role) {
         assert.isArray(config[role]);
         assert.lengthOf(config[role], 1);
       });
