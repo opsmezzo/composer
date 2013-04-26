@@ -10,7 +10,7 @@
   "main": "./lib/composer",
   "keywords": ["configuration management", "opsmezzo", "sysadmin"],
   "dependencies": {
-    "conservatory-api": "1.0.x",
+    "conservatory-api": "~1.0.1",
     "director": "~1.1.10",
     "flatiron": "~0.3.5",
     "flatiron-http-users": "~0.4.3",
