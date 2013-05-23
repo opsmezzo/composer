@@ -17,7 +17,6 @@
     "node_hash": "0.2.x",
     "neuron": "0.4.x",
     "optimist": "0.4.x",
-    "pkgcloud": "~0.6.15",
     "pkginfo": "0.3.x",
     "resourceful": "~0.2.2",
     "restful": "~0.2.2",
