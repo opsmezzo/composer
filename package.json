@@ -1,6 +1,6 @@
 {
   "name": "quill-composer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A configuration management and package management server that supports OS and infrastructure opacity.",
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "repository": {
