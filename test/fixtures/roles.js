@@ -8,16 +8,25 @@
 module.exports = [{
   resource: 'Role',
   name: 'composer',
+  version: '1.0.0',
   description: 'Resposible for serving systems and config',
-  systems: ['composer']
+  dependencies: {
+    'composer': '1.0.x'
+  }
 }, {
   resource: 'Role',
   name: 'quill-base',
+  version: '1.0.0',
   description: 'Has quill installed',
-  systems: ['quill-base']
+  dependencies: {
+    'quill-base': '1.0.x'
+  }
 }, {
   resource: 'Role',
   name: 'conservatory',
+  version: '1.0.0',
   description: 'Responsible for provisioning new servers',
-  systems: ['conservatory']
+  dependencies: {
+    'conservatory': '1.0.x'
+  }
 }];
