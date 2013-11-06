@@ -1,4 +1,6 @@
 {
+  "port": 9003,
+  "env": "development",
   "log": {
     "logAll": true
   },
