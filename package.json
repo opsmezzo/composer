@@ -1,6 +1,6 @@
 {
   "name": "quill-composer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A configuration management and package management server that supports OS and infrastructure opacity.",
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "repository": {
@@ -33,7 +33,7 @@
     "vows": "~0.7.x",
     "composer-api": "~1.0.0"
   },
-  "scripts": { 
+  "scripts": {
     "test": "bin/seed && vows test/**/*-test.js test/**/**/*-test.js --spec --isolate"
   },
   "engines": { "node": ">= 0.8.x" }
