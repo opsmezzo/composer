@@ -4,7 +4,7 @@ var util = require('util'),
     path = require('path'),
     argv = require('optimist').argv,
     composer = require('../lib/composer');
-    
+
 var help = [
     "usage: composer [options]",
     "",
@@ -21,18 +21,19 @@ if (argv.h || argv.help) {
 }
 
 var address    = argv.a || composer.common.ipAddress(),
-    configFile = argv.c || argv.config,
-    env        = argv.e || 'development',
-    port       = argv.p || 9004,
-    ipAddress;
+    configFile = argv.c || argv.config;
 
 configFile = configFile
   ? path.resolve(configFile)
   : path.join(__dirname, '..', 'config', 'env', 'development.json');
 
 console.log('Configuring composer'.magenta + ' with ' + configFile.yellow);
-console.log('Starting composer'.magenta + ' in ' + env.yellow);
 composer.config.file(configFile);
+
+var env  = argv.e || composer.config.get('env')  || 'development',
+    port = argv.p || composer.config.get('port') || 9004;
+
+console.log('Starting composer'.magenta + ' in ' + env.yellow);
 
 composer.start(port, function (err, server) {
   if (err) {
