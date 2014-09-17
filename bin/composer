@@ -35,6 +35,11 @@ var env  = argv.e || composer.config.get('env')  || 'development',
 
 console.log('Starting composer'.magenta + ' in ' + env.yellow);
 
+//
+// Add godot plugin if config exists
+//
+if (composer.config.get('godot')) composer.use(require('broadway-godot'));
+
 composer.start(port, function (err, server) {
   if (err) {
     return log('Error starting Composer: ' + err.message);
