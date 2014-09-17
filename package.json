@@ -8,22 +8,27 @@
     "url": "https://github.com/opsmezzo/composer.git"
   },
   "main": "./lib/composer",
-  "keywords": ["configuration management", "opsmezzo", "sysadmin"],
+  "keywords": [
+    "configuration management",
+    "opsmezzo",
+    "sysadmin"
+  ],
   "dependencies": {
+    "broadway-godot": "~1.0.0",
     "conservatory-api": "~1.0.1",
-    "director": "~1.1.10",
-    "flatiron": "~0.3.5",
-    "flatiron-http-users": "~0.4.3",
-    "node_hash": "0.2.x",
+    "director": "~1.2.3",
+    "flatiron": "~0.4.1",
+    "flatiron-http-users": "~0.5.0",
     "neuron": "0.4.x",
-    "optimist": "0.4.x",
+    "node_hash": "0.2.x",
+    "optimist": "0.6.x",
     "pkginfo": "0.3.x",
     "resourceful": "~0.2.2",
     "restful": "~0.2.2",
     "semver": "~1.1.4",
-    "union": "~0.3.6",
-    "winston": "0.6.x",
-    "winston-loggly": "0.6.0"
+    "union": "~0.4.0",
+    "winston": "0.8.x",
+    "winston-godot": "0.1.x"
   },
   "devDependencies": {
     "api-easy": "~0.3.7",
@@ -36,5 +41,7 @@
   "scripts": {
     "test": "bin/seed && vows test/**/*-test.js test/**/**/*-test.js --spec --isolate"
   },
-  "engines": { "node": ">= 0.8.x" }
+  "engines": {
+    "node": ">= 0.8.x"
+  }
 }
